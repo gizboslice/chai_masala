@@ -95,13 +95,40 @@
                                         <th>Last Purchase</th>
                                     </tr>
                                 </thead>
+                                
+                                <?php
+                                    
+                                    $username="root";
+                                    $password="Holiday1111";
+                                    $database="nuvita_customer_rewards";
+                                    
+                                    
+                                    mysql_connect(localhost,$username,$password);
+                                    @mysql_select_db($database) or die( "Unable to select database");
+                                    $query="SELECT * FROM nuvita_customer_rewards";
+                                    $result=mysql_query($query);
+                                    
+                                    $num=mysql_numrows($result);
+                                    mysql_close();
+                                    
+                                    $row=0;
+                                    
+                                    $user_id=mysql_result($result,$row,"user_id");
+                                    $first=mysql_result($result,$row,"first");
+                                    $last=mysql_result($result,$row,"last");
+                                    $phone=mysql_result($result,$row,"phone_number");
+                                    $bday=mysql_result($result,$row,"birthday");
+                                    
+                                    
+                                ?>
+                                
                                 <tbody>
                                     <tr class="odd gradeX">
-                                        <td>001</td>
-                                        <td>Andrew</td>
-                                        <td>Ginzberg</td>
-                                        <td class="center">203-555-5555</td>
-                                        <td class="center">01/17/2017</td>
+                                        <td><?php echo "$user_id"; ?></td>
+                                        <td><?php echo "$first"; ?></td>
+                                        <td><?php echo "$last"; ?></td>
+                                        <td class="center"><?php echo "$phone"; ?></td>
+                                        <td class="center"><?php echo "$bday"; ?></td>
                                     </tr>
                                     <tr class="even gradeC">
                                         <td>002</td>
