@@ -57,7 +57,7 @@
 
             <ul class="nav navbar-top-links navbar-right">
                 <a class="navbar-brand" href="index.html">Client</a>
-                <a class="navbar-brand" href="tables.html">Admin</a>
+                <a class="navbar-brand" href="tables.php">Admin</a>
                 <li class="dropdown">
                     <a class="dropdown-toggle" data-toggle="dropdown" href="#">
                         <i class="fa fa-user fa-fw"></i> <i class="fa fa-caret-down"></i>
@@ -86,6 +86,7 @@
             First Name: <input type="text" name="first"><br>
             Last Name: <input type="text" name="last"><br>
             Phone: <input type="text" name="phone"><br>
+            Birthday: <input type="date" name="bday"><br>
             <input type="Submit">
         </form>
 
