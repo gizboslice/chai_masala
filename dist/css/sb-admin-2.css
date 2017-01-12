@@ -423,5 +423,10 @@ table.dataTable thead .sorting:after {
 form {
   margin-top: 50px;
   text-align: center;
+  font-size: 18pt;
+}
+
+form input {
+  margin:20px;
 }
 
