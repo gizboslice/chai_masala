@@ -409,3 +409,19 @@ table.dataTable thead .sorting:after {
     border-left-width: 0;
   }
 }
+
+
+/*index*/
+.intro {
+  margin-top: 50px;
+  text-align: center;
+}
+.intro img {
+  width:400px;
+}
+
+form {
+  margin-top: 50px;
+  text-align: center;
+}
+
