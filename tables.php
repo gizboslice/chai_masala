@@ -12,22 +12,22 @@
     <title>Nuvita</title>
 
     <!-- Bootstrap Core CSS -->
-    <link href="../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- MetisMenu CSS -->
-    <link href="../vendor/metisMenu/metisMenu.min.css" rel="stylesheet">
+    <link href="vendor/metisMenu/metisMenu.min.css" rel="stylesheet">
 
     <!-- DataTables CSS -->
-    <link href="../vendor/datatables-plugins/dataTables.bootstrap.css" rel="stylesheet">
+    <link href="vendor/datatables-plugins/dataTables.bootstrap.css" rel="stylesheet">
 
     <!-- DataTables Responsive CSS -->
-    <link href="../vendor/datatables-responsive/dataTables.responsive.css" rel="stylesheet">
+    <link href="vendor/datatables-responsive/dataTables.responsive.css" rel="stylesheet">
 
     <!-- Custom CSS -->
-    <link href="../dist/css/sb-admin-2.css" rel="stylesheet">
+    <link href="dist/css/sb-admin-2.css" rel="stylesheet">
 
     <!-- Custom Fonts -->
-    <link href="../vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -78,6 +78,9 @@
             <!-- /.navbar-top-links -->
         </nav>
 
+
+
+        <!-- Hard coded table -->
         <div class="padding">  
             <!-- /.row -->
             <div class="row">
@@ -95,39 +98,14 @@
                                         <th>Last Purchase</th>
                                     </tr>
                                 </thead>
-                                
-<?php
-    
-    $servername = "localhost";
-    $username = "root";
-    $password = "Holiday1111";
-    $dbname = "nuvita_customer_rewards";
-    
-    // Create connection
-    $conn = new mysqli($servername, $username, $password, $dbname);
-    // Check connection
-    if ($conn->connect_error) {
-        die("Connection failed: " . $conn->connect_error);
-    }
-    
-    $sql = "SELECT user_id, first, last, birthday, last_purchase, purchases_until_reward, phone_number FROM nuvita_customer_rewards";
-    $result = $conn->query($sql);
-    
-    if ($result->num_rows > 0) {
-        echo "<table><tr><th>ID</th><th>Name</th><th>Birthday</th><th>Last Purchase</th><th># for Reward</th><th>Phone</th></tr>";
-        // output data of each row
-        while($row = $result->fetch_assoc()) {
-            echo "<tr><td>" . $row["user_id"]. "</td><td>" . $row["first"]. " " . $row["last"]. "</td><td>" . $row["birthday"]. "</td><td>" . $row["last_purchase"]. "</td><td>" . $row["purchases_until_reward"]. "</td><td>" . $row["phone_number"]. "</td></tr>";
-        }
-        echo "</table>";
-    } else {
-        echo "0 results";
-    }
-    
-    $conn->close();
-    
-    
-    ?>
+                                <tbody>
+                                    <tr class="even gradeC">
+                                        <td>002</td>
+                                        <td>Alexander</td>
+                                        <td>Marieb</td>
+                                        <td class="center">203-555-5555</td>
+                                        <td class="center">01/17/2017</td>
+                                    </tr>                                   
                                 </tbody>
                             </table>
                             <!-- /.table-responsive -->
@@ -140,28 +118,96 @@
             </div>
             <!-- /.row -->
         </div>
+
+
+
+
+        <!-- PHP table -->
+        <div class="padding">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="panel panel-default">
+                        <div class="panel-body">
+
+                            <?php
+    
+                                $servername = "localhost";
+                                $username = "root";
+                                $password = "Holiday1111";
+                                $dbname = "nuvita_customer_rewards";
+                                
+                                // Create connection
+                                $conn = new mysqli($servername, $username, $password, $dbname);
+                                // Check connection
+                                if ($conn->connect_error) {
+                                    die("Connection failed: " . $conn->connect_error);
+                                }
+                                
+                                $sql = "SELECT user_id, first, last, birthday, last_purchase, purchases_until_reward, phone_number FROM nuvita_customer_rewards";
+                                $result = $conn->query($sql);
+                                
+                                if ($result->num_rows > 0) {
+                                    echo 
+                                        "<table width="100%" class="table table-striped table-bordered table-hover" id="dataTables-example">
+                                            <thead>
+                                                    <tr>
+                                                        <th>ID</th>
+                                                        <th>Name</th>
+                                                        <th>Birthday</th>
+                                                        <th>Last Purchase</th>
+                                                        <th># for Reward</th>
+                                                        <th>Phone</th>
+                                                    </tr>
+                                            </thead>";
+                                    // output data of each row
+                                    while($row = $result->fetch_assoc()) {
+                                        echo 
+                                            "<tbody>
+                                                <tr class="gradeA">
+                                                    <td>" . $row["user_id"]. "</td>
+                                                    <td>" . $row["first"]. " " . $row["last"]. "</td>
+                                                    <td>" . $row["birthday"]. "</td>
+                                                    <td>" . $row["last_purchase"]. "</td>
+                                                    <td>" . $row["purchases_until_reward"]. "</td>
+                                                    <td>" . $row["phone_number"]. "</td>
+                                                </tr>";
+                                    }
+                                        echo 
+                                            "</tbody>
+                                        </table>";
+                                } else {
+                                    echo "0 results";
+                                }
+                                
+                                $conn->close();
+                                
+                            ?>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-        <!-- /#page-wrapper -->
+
 
     </div>
     <!-- /#wrapper -->
 
     <!-- jQuery -->
-    <script src="../vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/jquery/jquery.min.js"></script>
 
     <!-- Bootstrap Core JavaScript -->
-    <script src="../vendor/bootstrap/js/bootstrap.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
 
     <!-- Metis Menu Plugin JavaScript -->
-    <script src="../vendor/metisMenu/metisMenu.min.js"></script>
+    <script src="vendor/metisMenu/metisMenu.min.js"></script>
 
     <!-- DataTables JavaScript -->
-    <script src="../vendor/datatables/js/jquery.dataTables.min.js"></script>
-    <script src="../vendor/datatables-plugins/dataTables.bootstrap.min.js"></script>
-    <script src="../vendor/datatables-responsive/dataTables.responsive.js"></script>
+    <script src="vendor/datatables/js/jquery.dataTables.min.js"></script>
+    <script src="vendor/datatables-plugins/dataTables.bootstrap.min.js"></script>
+    <script src="vendor/datatables-responsive/dataTables.responsive.js"></script>
 
     <!-- Custom Theme JavaScript -->
-    <script src="../dist/js/sb-admin-2.js"></script>
+    <script src="dist/js/sb-admin-2.js"></script>
 
     <!-- Page-Level Demo Scripts - Tables - Use for reference -->
     <script>
